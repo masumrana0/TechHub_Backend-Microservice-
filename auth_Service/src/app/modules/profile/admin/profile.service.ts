@@ -28,7 +28,6 @@ const updateProfile = async (
   if (name && Object.keys(name).length > 0) {
     Object.keys(name).forEach(key => {
       const nameKey = `name.${key}`;
-      console.log(nameKey);
 
       (updatedUserData as any)[nameKey] = name[key as keyof IName];
     });
@@ -42,12 +41,11 @@ const updateProfile = async (
 
   const result = await Admin_profile.findOneAndUpdate(
     { user: userId },
-    payload,
+    updatedUserData,
     {
       new: true,
     },
   ).populate('user');
-  console.log(result);
 
   return result;
 };

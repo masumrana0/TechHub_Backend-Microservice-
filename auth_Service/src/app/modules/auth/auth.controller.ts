@@ -73,14 +73,23 @@ const changePassword = catchAsync(async (req: Request, res: Response) => {
   const user = req.user;
   const { ...passwordData } = req.body;
 
-  await AuthService.changePassword(passwordData, user);
+  const result = await AuthService.changePassword(passwordData, user);
 
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Password changed successfully !',
-    data: null,
-  });
+  if (result) {
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'someThing is wrong !',
+      data: result,
+    });
+  } else {
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Password changed successfully !',
+      data: null,
+    });
+  }
 });
 
 // email verification

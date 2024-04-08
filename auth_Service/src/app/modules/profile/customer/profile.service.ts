@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { IName } from '../../user/user.interface';
+import { User } from '../../user/user.model';
 import { IProfile } from '../profile.interface';
 import { Customer_profile } from './profile.model';
 
@@ -12,16 +15,39 @@ const updateProfile = async (
   userId: string,
   payload: Partial<IProfile>,
 ): Promise<IProfile | null> => {
+  const { name, ...userData } = payload;
   const profileExist = await Customer_profile.findOne({ user: userId });
 
   if (!profileExist) {
-    const result = await await Customer_profile.create(payload);
+    const result = await Customer_profile.create(payload);
     return result;
   }
 
-  const result = await Customer_profile.findByIdAndUpdate(userId, payload, {
-    new: true,
-  }).populate('user');
+  const updatedUserData = { ...userData };
+
+  if (name && Object.keys(name).length > 0) {
+    Object.keys(name).forEach(key => {
+      const nameKey = `name.${key}`;
+      (updatedUserData as any)[nameKey] = name[key as keyof IName];
+    });
+  }
+
+  console.log(updatedUserData);
+
+  if (updatedUserData?.phoneNumber) {
+    await User.findByIdAndUpdate(userId, {
+      phoneNumber: updatedUserData.phoneNumber,
+    });
+  }
+
+  const result = await Customer_profile.findOneAndUpdate(
+    { user: userId },
+    updatedUserData,
+    {
+      new: true,
+    },
+  ).populate('user');
+
   return result;
 };
 

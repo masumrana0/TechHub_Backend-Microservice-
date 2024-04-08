@@ -20,6 +20,6 @@ export type IRefreshTokenResponse = {
 };
 
 export type IChangePassword = {
-  oldPassord: string;
+  oldPassword: string;
   newPassword: string;
 };

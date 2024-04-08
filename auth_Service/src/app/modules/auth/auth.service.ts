@@ -112,11 +112,10 @@ const refreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
 const changePassword = async (
   payload: IChangePassword,
   user: JwtPayload | null,
-) => {
-  const { oldPassord, newPassword } = payload;
-
+): Promise<IDataValidationResponse | undefined> => {
+  const { oldPassword, newPassword } = payload;
   // checking user existed
-  const isUserExist = await User.findById(user?.userId);
+  const isUserExist = await User.findById(user?.userId).select({ password: 1 });
 
   if (!isUserExist) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
@@ -125,9 +124,11 @@ const changePassword = async (
   // checking old password
   if (
     isUserExist.password &&
-    !(await User.isPasswordMatched(oldPassord, isUserExist.password))
+    !(await User.isPasswordMatched(oldPassword, isUserExist.password))
   ) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, 'old password is incorrect');
+    return validationResponse(
+      'old plassword is inccorect.please try to remember again',
+    );
   }
 
   isUserExist.password = newPassword;
