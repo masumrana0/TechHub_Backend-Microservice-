@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { IName } from '../../user/user.interface';
+import { User } from '../../user/user.model';
 import { IProfile } from '../profile.interface';
 import { Admin_profile } from './profile.model';
 
@@ -12,16 +15,40 @@ const updateProfile = async (
   userId: string,
   payload: Partial<IProfile>,
 ): Promise<IProfile | null> => {
-  const profileExist = await Admin_profile.findOne({ userId: userId });
+  const { name, ...userData } = payload;
+  const profileExist = await Admin_profile.findOne({ user: userId });
 
   if (!profileExist) {
     const result = await Admin_profile.create(payload);
     return result;
   }
 
-  const result = await Admin_profile.findByIdAndUpdate(userId, payload, {
-    new: true,
-  }).populate('user');
+  const updatedUserData = { ...userData };
+
+  if (name && Object.keys(name).length > 0) {
+    Object.keys(name).forEach(key => {
+      const nameKey = `name.${key}`;
+      console.log(nameKey);
+
+      (updatedUserData as any)[nameKey] = name[key as keyof IName];
+    });
+  }
+
+  if (updatedUserData?.phoneNumber) {
+    await User.findByIdAndUpdate(userId, {
+      phoneNumber: updatedUserData.phoneNumber,
+    });
+  }
+
+  const result = await Admin_profile.findOneAndUpdate(
+    { user: userId },
+    payload,
+    {
+      new: true,
+    },
+  ).populate('user');
+  console.log(result);
+
   return result;
 };
 

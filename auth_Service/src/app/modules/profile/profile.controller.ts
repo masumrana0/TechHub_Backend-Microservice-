@@ -1,36 +1,58 @@
 import { Request, Response } from 'express';
-
-import { ProfileService } from './admin/profile.service';
-
 import httpStatus from 'http-status';
 import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
 import { IProfile } from './profile.interface';
+import { ProfileService } from './profile.service';
+import { Customer_profile } from './customer/profile.model';
+import { AdminProfileService } from './admin/profile.service';
+import { CustomerService } from '../auth/customer/customer.service';
+import { CustomerProfileService } from './customer/profile.service';
 
 const getProfile = catchAsync(async (req: Request, res: Response) => {
-  const user = req.user;
-  const result = await ProfileService.getUserProfile(user?.email);
+  const tokenData = req.user;
+  if (tokenData !== null && tokenData !== undefined) {
+    const payload = {
+      userId: tokenData.userId as string,
+      role: tokenData.role as 'admin' | 'customer' | 'super_admin',
+    };
 
-  sendResponse<IProfile>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Profile fatched successfully !',
-    data: result,
-  });
+    const result = await ProfileService.getProfile(payload);
+
+    sendResponse<IProfile>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Profile fetched successfully!',
+      data: result,
+    });
+  }
 });
 
 const updateProfile = catchAsync(async (req: Request, res: Response) => {
-  const id = req?.user?.userId;
-  const updatedData = req.body;
-  const result = await ProfileService.updateProfile(id, updatedData);
-  // console.log(updatedData, id);
+  const { ...updatedData } = req.body;
+  const tokenData = req.user;
 
-  sendResponse<IUser>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'user profile is updated  successfully !',
-    data: result,
-  });
+  if (tokenData && 'userId' in tokenData) {
+    let result;
+    if (tokenData.role === 'customer') {
+      result = await CustomerProfileService.updateProfile(
+        tokenData.userId,
+        updatedData,
+      );
+    } else if (tokenData.role === 'admin' || tokenData.role === 'super_admin') {
+      result = await AdminProfileService.updateProfile(
+        tokenData.userId,
+        updatedData,
+      );
+    }
+
+    sendResponse<IProfile>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'user profile is updated  successfully !',
+      data: result,
+    });
+  }
 });
 
 export const ProfileController = {

@@ -12,7 +12,7 @@ const updateProfile = async (
   userId: string,
   payload: Partial<IProfile>,
 ): Promise<IProfile | null> => {
-  const profileExist = await Customer_profile.findOne({ userId: userId });
+  const profileExist = await Customer_profile.findOne({ user: userId });
 
   if (!profileExist) {
     const result = await await Customer_profile.create(payload);

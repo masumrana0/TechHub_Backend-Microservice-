@@ -19,13 +19,11 @@ const adminRegistration = async (
   const { name, ...data } = payload;
   const result = await User.create(data);
 
-  if (result._id) {
-    const profileData = {
-      userId: result?._id,
-      name: name,
-    };
-    await AdminProfileService.updateProfile(result._id, profileData);
-  }
+  const profileData = {
+    user: result?._id,
+    name: name,
+  };
+  await AdminProfileService.updateProfile(result._id, profileData);
 
   const loginData = { email: result?.email, password: payload?.password };
   const token = await AuthService.userLogin(loginData);

@@ -10,7 +10,7 @@ import { IUser } from '../../user/user.interface';
 import { User } from '../../user/user.model';
 import { IDataValidationResponse, ILoginUserResponse } from '../auth.interface';
 import { AuthService } from '../auth.service';
-import { IProfile } from '../../profile/profile.interface';
+
 import { CustomerProfileService } from '../../profile/customer/profile.service';
 
 // customer registration
@@ -27,7 +27,7 @@ const customerRegistration = async (
   // update profile
   if (result._id) {
     const profileData = {
-      userId: result?._id,
+      user: result?._id,
       name: name,
     };
     await CustomerProfileService.updateProfile(result._id, profileData);

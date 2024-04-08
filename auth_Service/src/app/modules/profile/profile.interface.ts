@@ -4,5 +4,6 @@ import { IName, IUser } from '../user/user.interface';
 export type IProfile = {
   user: Types.ObjectId | IUser | string;
   name: IName;
+  phoneNumber?: string;
   profilePicture: string;
 };
