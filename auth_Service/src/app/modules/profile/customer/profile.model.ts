@@ -3,7 +3,7 @@ import { IProfile } from '../profile.interface';
 
 const CustomerProfileSchema = new Schema<IProfile>(
   {
-    userId: {
+    user: {
       type: Types.ObjectId,
       ref: 'User',
     },
@@ -12,7 +12,7 @@ const CustomerProfileSchema = new Schema<IProfile>(
         type: String,
         required: true,
       },
-      lastNameName: {
+      lastName: {
         type: String,
       },
     },

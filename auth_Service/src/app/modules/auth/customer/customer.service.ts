@@ -26,10 +26,11 @@ const customerRegistration = async (
   const result = await User.create(data);
   // update profile
   if (result._id) {
-    await CustomerProfileService.updateProfile(
-      result._id,
-      name as Partial<IProfile>,
-    );
+    const profileData = {
+      userId: result?._id,
+      name: name,
+    };
+    await CustomerProfileService.updateProfile(result._id, profileData);
   }
 
   // sendEmailVerificationMail

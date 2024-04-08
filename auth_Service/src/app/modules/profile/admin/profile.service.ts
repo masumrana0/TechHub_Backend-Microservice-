@@ -15,16 +15,13 @@ const updateProfile = async (
   const profileExist = await Admin_profile.findOne({ userId: userId });
 
   if (!profileExist) {
-    if (!payload.userId) {
-      payload.userId = userId;
-    }
-    const result = (await Admin_profile.create(payload)).populate('User');
+    const result = await Admin_profile.create(payload);
     return result;
   }
 
   const result = await Admin_profile.findByIdAndUpdate(userId, payload, {
     new: true,
-  });
+  }).populate('user');
   return result;
 };
 

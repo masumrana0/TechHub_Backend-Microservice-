@@ -27,7 +27,7 @@ const customerRegisterZodSchema = z.object({
       firstName: z.string(),
       lastName: z.string().optional(),
     }),
-    phoneNumber: z.string(),
+    phoneNumber: z.string().optional(),
     email: z.string().email(),
     password: z.string(),
   }),

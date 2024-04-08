@@ -23,6 +23,7 @@ const userLogin = async (
 
   // checking isUserExist
   const isUserExist = await User.isUserExist(email);
+
   if (!isUserExist) {
     return validationResponse('User does not exist,Please create new account!');
   }
@@ -37,8 +38,6 @@ const userLogin = async (
 
   // create accessToken & refresh token
   const { _id, role, email: Email, isEmailVerified } = isUserExist;
-
-  
 
   // create accessToken
   const accessToken = jwtHelpers.createToken(
@@ -118,7 +117,6 @@ const changePassword = async (
 
   // checking user existed
   const isUserExist = await User.findById(user?.userId);
-  // console.log(isUserExist);
 
   if (!isUserExist) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
@@ -194,7 +192,7 @@ const sendEmailVerificationMail = async (email: string): Promise<void> => {
     'user Email verification',
     `
     <div style="font-family: Arial, sans-serif; color: #333; background-color: #f9f9f9; padding: 20px;">
-    <h1 style="color: #4CAF50;">Welcome to <span style="color: #4CAF50;">LaundryHub</span></h1>
+    <h1 style="color: #4CAF50;">Welcome to <span style="color: #4CAF50;">TechHub</span></h1>
     <p>Please verify your account by clicking the following link:</p>
     <button style=" padding: 12px 20px; background-color: #4CAF50; color: white; border-radius: 5px; border:none"><a href="${verificationLink}" style="text-decoration: none;color:white; font-weight:bold" >Verify Email</a></button>
    

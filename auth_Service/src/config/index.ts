@@ -17,9 +17,9 @@ export default {
   email_password: process.env.EMAIL_PASSWORD,
   verification_url: process.env.EMAIL_VERIFICATION_URL,
   database_url: process.env.DATABASE_URL,
-  bcrypt_salt_rounds: process.env.SOLT_ROUNDS,
+  bcrypt_salt_rounds: process.env.BCRYPT_SALT_ROUNDS,
   accessTokenSecret: process.env.JWT_ACCESSTOKEN_SECRET,
   refreshTokenSecret: process.env.JWT_REFRESHTOKEN_SECRET,
-  accessTokenExpireIn: process.env.JWT_ACCESSTOKEN_EXPIRE,
-  refreshTokenExpireIn: process.env.JWT_REFRESHTOKEN_EXPIRE,
+  accessTokenExpireIn: process.env.JWT_ACCESSTOKEN_EXPIREIN,
+  refreshTokenExpireIn: process.env.JWT_REFRESHTOKEN_EXPIREIN,
 };
