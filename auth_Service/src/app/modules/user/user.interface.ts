@@ -8,6 +8,7 @@ export type IName = {
 
 export type IUser = {
   _id?: string;
+  name: IName;
   role: 'customer' | 'admin' | 'super_admin';
   password: string;
   phoneNumber: string;

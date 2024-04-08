@@ -6,13 +6,12 @@
  *
  */
 
-import httpStatus from 'http-status';
-import ApiError from '../../../../errors/ApiError';
 import { IUser } from '../../user/user.interface';
 import { User } from '../../user/user.model';
 import { IDataValidationResponse, ILoginUserResponse } from '../auth.interface';
 import { AuthService } from '../auth.service';
-import validationResponse from '../../../../shared/validationResponse';
+import { IProfile } from '../../profile/profile.interface';
+import { CustomerProfileService } from '../../profile/customer/profile.service';
 
 // customer registration
 const customerRegistration = async (
@@ -21,18 +20,20 @@ const customerRegistration = async (
   if (!payload.role) {
     payload.role = 'customer';
   }
+  const { name, ...data } = payload;
 
-  const isNotUniqueEmail = await User.isUserExist(payload.email);
-  if (isNotUniqueEmail) {
-    return validationResponse('Sorry, this email address is already in use.');
+  // create User
+  const result = await User.create(data);
+  // update profile
+  if (result._id) {
+    await CustomerProfileService.updateProfile(
+      result._id,
+      name as Partial<IProfile>,
+    );
   }
 
-  const result = await User.create(payload);
+  // sendEmailVerificationMail
   await AuthService.sendEmailVerificationMail(result.email);
-
-  if (!result) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Something is wrong');
-  }
 
   const loginData = { email: result?.email, password: payload?.password };
   const token = await AuthService.userLogin(loginData);

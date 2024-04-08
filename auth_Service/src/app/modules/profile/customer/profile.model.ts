@@ -1,7 +1,7 @@
 import { Schema, Types, model } from 'mongoose';
 import { IProfile } from '../profile.interface';
 
-const AdminProfileSchema = new Schema<IProfile>(
+const CustomerProfileSchema = new Schema<IProfile>(
   {
     userId: {
       type: Types.ObjectId,
@@ -28,7 +28,7 @@ const AdminProfileSchema = new Schema<IProfile>(
   },
 );
 
-export const Admin_profile = model<IProfile>(
-  'Admin_profile',
-  AdminProfileSchema,
+export const Customer_profile = model<IProfile>(
+  'Customer_profile',
+  CustomerProfileSchema,
 );

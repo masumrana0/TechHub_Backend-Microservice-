@@ -6,8 +6,8 @@
  *
  */
 
-import httpStatus from 'http-status';
-import ApiError from '../../../../errors/ApiError';
+import { AdminProfileService } from '../../profile/admin/profile.service';
+import { IProfile } from '../../profile/profile.interface';
 import { IUser } from '../../user/user.interface';
 import { User } from '../../user/user.model';
 import { ILoginUserResponse } from '../auth.interface';
@@ -17,11 +17,14 @@ import { AuthService } from '../auth.service';
 const adminRegistration = async (
   payload: IUser,
 ): Promise<ILoginUserResponse> => {
-  const result = await User.create(payload);
-  if (!result) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Failed To create admin');
+  const { name, ...data } = payload;
+  const result = await User.create(data);
+  if (result._id) {
+    await AdminProfileService.updateProfile(
+      result._id,
+      name as Partial<IProfile>,
+    );
   }
-
   const loginData = { email: result?.email, password: payload?.password };
   const token = await AuthService.userLogin(loginData);
 
