@@ -23,7 +23,7 @@ let server: Server;
 
 const Run = async () => {
   try {
-    await RedisClient.connect();
+    // await RedisClient.connect();
     await mongoose.connect(config.database_url as string);
     console.log('Database is connected');
     server = app.listen(config.port, () => {

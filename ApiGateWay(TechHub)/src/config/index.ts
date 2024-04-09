@@ -20,6 +20,7 @@ export default {
   redis_Url: process.env.REDIS_URL,
   auth_service_url: process.env.AUTH_SERVICE_URL,
   product_service_url: process.env.PRODUCT_SERVICE_URL,
+  order_service_url: process.env.ORDER_SERVICE_URL,
   bcrypt_salt_rounds: process.env.BCRYPT_SALT_ROUNDS,
   accessTokenSecret: process.env.JWT_ACCESSTOKEN_SECRET,
   refreshTokenSecret: process.env.JWT_REFRESHTOKEN_SECRET,

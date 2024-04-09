@@ -7,6 +7,11 @@ import httpStatus from 'http-status';
 
 const createProduct = catchAsync(async (req: Request, res: Response) => {
   const { ...productData } = req.body;
+console.log(req.user);
+
+  if (req.user && 'userId' in req.user) {
+    productData.user = req.user.userId;
+  }
 
   const result = await OrderService.createOrder(productData);
 
@@ -28,7 +33,7 @@ const getSpecificUserOrderHistory = catchAsync(
       sendResponse<IOrder[]>(res, {
         statusCode: httpStatus.OK,
         success: true,
-        message: 'Product created successfully !',
+        message: 'Product fatched successfully !',
         data: result,
       });
     }

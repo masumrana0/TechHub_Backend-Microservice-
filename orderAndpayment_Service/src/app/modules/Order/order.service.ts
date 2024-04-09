@@ -9,9 +9,11 @@ const createOrder = async (payload: IOrder): Promise<IOrder | null> => {
 const getSpecificOrderHistory = async (
   id: string,
 ): Promise<IOrder[] | null> => {
+  console.log(id);
   const result = await Order.find({
     user: id,
   });
+
   return result;
 };
 
