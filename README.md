@@ -47,9 +47,9 @@ Please ensure that every request includes the `accessToken` in the headers.Autho
 "email":"masum.rana6267@gmail.com",
 "password":"123456"
 ```
-
 - **Access Token:** ```text 
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjEzZjBkOTg0OTFkMjBmYjgyMGRiNTQiLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJlbWFpbCI6Im1hc3VtLnJhbmE2MjY3QGdtYWlsLmNvbSIsImlhdCI6MTcxMjY4ODgwOCwiZXhwIjoxNzE0MDAyODA4fQ.h27FNGeRxX3l1_n25HpjrX8ZtkSDgo9pQmNbHA_hicg ```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjEzZjBkOTg0OTFkMjBmYjgyMGRiNTQiLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJlbWFpbCI6Im1hc3VtLnJhbmE2MjY3QGdtYWlsLmNvbSIsImlhdCI6MTcxMjY4ODgwOCwiZXhwIjoxNzE0MDAyODA4fQ.h27FNGeRxX3l1_n25HpjrX8ZtkSDgo9pQmNbHA_hicg
+```
 
 ### Customer Login
 
@@ -61,8 +61,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjEzZjBkOTg0OTFkMjBmYjgyMGR
 "password":"123456"
 ```
 
-- **Access Token:** `text
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjE1OGU2MTZkMTVkYWE0MDVhMGIwYTAiLCJyb2xlIjoiY3VzdG9tZXIiLCJlbWFpbCI6Imhvc3NhaW4xMjNAZ21haWwuY29tIiwiaWF0IjoxNzEyNjg4NzQwLCJleHAiOjE3MTQwMDI3NDB9.qCtcvs9VELADIVbSaoh2ZpHWln85HJhhlPIrmzfCirk`
+- **Access Token:** ```text
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjE1OGU2MTZkMTVkYWE0MDVhMGIwYTAiLCJyb2xlIjoiY3VzdG9tZXIiLCJlbWFpbCI6Imhvc3NhaW4xMjNAZ21haWwuY29tIiwiaWF0IjoxNzEyNjg4NzQwLCJleHAiOjE3MTQwMDI3NDB9.qCtcvs9VELADIVbSaoh2ZpHWln85HJhhlPIrmzfCirk```
 
 #### Authentication Routes
 
