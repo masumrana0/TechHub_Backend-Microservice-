@@ -3,6 +3,7 @@ export const productFilterAbleFields = [
   'category',
   'productName',
   'model',
+  'brand',
 ];
 
-export const productSearchableFields = ['productName', 'model'];
+export const productSearchableFields = ['productName', 'model', 'brand'];

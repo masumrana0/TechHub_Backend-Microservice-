@@ -6,7 +6,7 @@ import { Review } from './review.model';
 
 // get Review
 const getReview = async (id: string): Promise<IReview[] | null> => {
-  const result = await Review.find({ productId: id }).populate('user');
+  const result = await Review.find({ productId: id });
   return result;
 };
 

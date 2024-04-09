@@ -5,16 +5,30 @@ import { productSearchableFields } from './product.constant';
 import { IProduct, IProductFilters } from './product.interface';
 import { Product } from './product.model';
 import { IGenericResponse } from '../../../shared/sendResponse';
+import ApiError from '../../../errors/ApiError';
+import httpStatus from 'http-status';
 
 // create product
 const createProduct = async (payload: IProduct): Promise<IProduct | null> => {
-  const result = await Product.create(payload);
+  // Check if status is not provided in the payload, default it to 'In Stock'
+  if (!payload.status) {
+    payload.status = 'In Stock';
+  }
+
+  const result = (await Product.create(payload)).populate('category');
   return result;
 };
 
 // getSingle product
 const getSingleProduct = async (id: string): Promise<IProduct | null> => {
   const result = await Product.findById(id);
+  if (!result) {
+    throw new ApiError(
+      httpStatus.NOT_FOUND,
+      'product not pund.Invalid productId',
+    );
+  }
+
   return result;
 };
 
@@ -62,7 +76,7 @@ const getAllProduct = async (
     andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await Product.find(whereConditions)
-    .populate('Category')
+    .populate('category')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);

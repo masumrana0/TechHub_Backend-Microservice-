@@ -3,10 +3,15 @@ import { ReviewRoutes } from '../modules/review/review.route';
 import { RatingRoutes } from '../modules/rating/raing.route';
 import { FQARoutes } from '../modules/FQA/fqa.route';
 import { ProductRoutes } from '../modules/product/product.route';
+import { CategoryRoutes } from '../modules/category/category.route';
 
 const router = express.Router();
 
 const moduleRoutes = [
+  {
+    path: '/category',
+    route: CategoryRoutes,
+  },
   {
     path: '/product',
     route: ProductRoutes,

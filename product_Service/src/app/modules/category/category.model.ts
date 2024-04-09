@@ -1,11 +1,11 @@
 import { Schema, model } from 'mongoose';
-import { CategoryName, ICategoryName } from './category.interface';
+import { ICategoryType, categoryTypes } from './category.interface';
 
 // Define the Mongoose schema
-const CategorySchema = new Schema<ICategoryName>({
-  categoryName: {
+const CategorySchema = new Schema<ICategoryType>({
+  categoryType: {
     type: String,
-    enum: CategoryName,
+    enum: categoryTypes,
     required: true,
   },
 });

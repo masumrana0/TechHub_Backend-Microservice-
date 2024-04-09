@@ -1,5 +1,4 @@
 import { Types } from 'mongoose';
-// import { IService } from '../service/service.interface';
 import { IUser } from '../user/user.interface';
 import { IProduct } from '../product/product.interface';
 

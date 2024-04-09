@@ -1,12 +1,8 @@
 import { z } from 'zod';
-const CategoryEnumName = z.enum([
-  'Mobile Phones',
-  'PC Components',
-  'Laptops',
-  'Tablets',
-]);
+import { categoryTypes } from './category.interface';
+const CategoryEnumType = z.enum(['', ...categoryTypes]);
 export const CategoryZodSchema = z.object({
   body: z.object({
-    categoryName: CategoryEnumName,
+    categoryType: CategoryEnumType,
   }),
 });
