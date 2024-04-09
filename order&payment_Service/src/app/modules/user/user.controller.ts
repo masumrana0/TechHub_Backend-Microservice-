@@ -32,7 +32,7 @@ const updateUserByadmin = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
   const { ...updatedData } = req.body;
   // console.log(updatedData);
-  
+
   const result = await UserService.updateUserByadmin(id, updatedData);
 
   sendResponse<IUser>(res, {
