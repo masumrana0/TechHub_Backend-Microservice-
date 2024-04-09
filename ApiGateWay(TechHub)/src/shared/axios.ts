@@ -1,7 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 
 import config from '../config';
-import { response } from 'express';
 
 const HttpService = (baseUrl: string): AxiosInstance => {
   const instance = axios.create({
@@ -23,12 +22,10 @@ const HttpService = (baseUrl: string): AxiosInstance => {
 
   instance.interceptors.response.use(
     response => {
-      // console.log(response);
       return response.data;
     },
     error => {
-      // return Promise.reject(error);
-      return error;
+      return Promise.reject(error);
     },
   );
 
