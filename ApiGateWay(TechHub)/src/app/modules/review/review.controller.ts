@@ -5,7 +5,6 @@ import { ReviewService } from './review.service';
 // review part
 const createProductReview = catchAsync(async (req: Request, res: Response) => {
   const result = await ReviewService.createReview(req);
-
   res.send(result);
 });
 
