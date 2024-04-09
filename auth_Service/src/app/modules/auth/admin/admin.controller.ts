@@ -10,20 +10,20 @@ import { AdminService } from './admin.service';
 const adminRegistration = catchAsync(async (req: Request, res: Response) => {
   const { ...userData } = req.body;
   const result = await AdminService.adminRegistration(userData);
-  const { refreshToken, accessToken, isEmailVerified } = result;
-  const responseData = { accessToken, isEmailVerified };
-  // set refresh token into cookie
-  const cookieOptions = {
-    secure: config.env === 'production',
-    httpOnly: true,
-  };
-  res.cookie('refreshToken', refreshToken, cookieOptions);
+  // const { refreshToken, accessToken, isEmailVerified } = result;
+  // const responseData = { accessToken, isEmailVerified };
+  // // set refresh token into cookie
+  // const cookieOptions = {
+  //   secure: config.env === 'production',
+  //   httpOnly: true,
+  // };
+  // res.cookie('refreshToken', refreshToken, cookieOptions);
 
   sendResponse<ILoginUserResponse>(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'User Registration  successfully !',
-    data: responseData,
+    data: result,
   });
 });
 

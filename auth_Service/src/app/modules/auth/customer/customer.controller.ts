@@ -17,7 +17,6 @@ import { CustomerService } from './customer.service';
 // customer registration with login
 const customerRegistration = catchAsync(async (req: Request, res: Response) => {
   const { ...userData } = req.body;
- 
 
   // await AuthService.sendEmailVerificationMail(userData.email);
   const result = await CustomerService.customerRegistration(userData);
@@ -31,21 +30,21 @@ const customerRegistration = catchAsync(async (req: Request, res: Response) => {
       data: result,
     });
   } else {
-    const { refreshToken, accessToken, isEmailVerified } = result;
-    const responseData = { accessToken, isEmailVerified };
+    // const { refreshToken, accessToken, isEmailVerified } = result;
+    // const responseData = { accessToken, isEmailVerified };
     // set refresh token into cookie
-    const cookieOptions = {
-      secure: config.env === 'production',
-      httpOnly: true,
-    };
+    // const cookieOptions = {
+    //   secure: config.env === 'production',
+    //   httpOnly: true,
+    // };
 
-    res.cookie('refreshToken', refreshToken, cookieOptions);
+    // res.cookie('refreshToken', refreshToken, cookieOptions);
 
     sendResponse<ILoginUserResponse>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'User Registration in successfully !',
-      data: responseData,
+      data: result,
     });
   }
 });

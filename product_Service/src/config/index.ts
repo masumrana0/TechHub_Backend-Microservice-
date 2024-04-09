@@ -17,6 +17,8 @@ export default {
   email_password: process.env.EMAIL_PASSWORD,
   verification_url: process.env.EMAIL_VERIFICATION_URL,
   database_url: process.env.DATABASE_URL,
+  redis_url: process.env.REDIS_URL,
+  redis_token_expirein: process.env.REDIS_TOKEN_EXPIRES_IN,
   bcrypt_salt_rounds: process.env.BCRYPT_SALT_ROUNDS,
   accessTokenSecret: process.env.JWT_ACCESSTOKEN_SECRET,
   refreshTokenSecret: process.env.JWT_REFRESHTOKEN_SECRET,

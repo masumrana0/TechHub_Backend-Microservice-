@@ -15,6 +15,7 @@ import { Secret } from 'jsonwebtoken';
 // userLogin
 const userLogin = catchAsync(async (req: Request, res: Response) => {
   const { ...loginData } = req.body;
+  // console.log(loginData);
 
   const result = await AuthService.userLogin(loginData);
 
@@ -27,21 +28,21 @@ const userLogin = catchAsync(async (req: Request, res: Response) => {
       data: result,
     });
   } else {
-    const { refreshToken, accessToken, isEmailVerified } = result;
-    const responseData = { accessToken, isEmailVerified };
-    // set refresh token into cookie
-    const cookieOptions = {
-      secure: config.env === 'production',
-      httpOnly: true,
-    };
+    // const { refreshToken, accessToken, isEmailVerified } = result;
+    // const responseData = { accessToken, isEmailVerified };
+    // // set refresh token into cookie
+    // const cookieOptions = {
+    //   secure: config.env === 'production',
+    //   httpOnly: true,
+    // };
 
-    res.cookie('refreshToken', refreshToken, cookieOptions);
+    // res.cookie('refreshToken', refreshToken, cookieOptions);
 
     sendResponse<ILoginUserResponse>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'User logged in successfully!',
-      data: responseData,
+      data: result,
     });
   }
 });
@@ -51,15 +52,6 @@ const refreshToken = catchAsync(async (req: Request, res: Response) => {
   const { refreshToken } = req.cookies;
 
   const result = await AuthService.refreshToken(refreshToken);
-
-  // set refresh token into cookie
-  const cookieOptions = {
-    secure: config.env === 'production',
-    httpOnly: true,
-  };
-
-  res.cookie('refreshToken', refreshToken, cookieOptions);
-
   sendResponse<IRefreshTokenResponse>(res, {
     statusCode: 200,
     success: true,

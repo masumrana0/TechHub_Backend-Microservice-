@@ -11,6 +11,8 @@ import { paginationFields } from '../../../constant/pagination';
 // create product
 const createProduct = catchAsync(async (req: Request, res: Response) => {
   const { ...productData } = req.body;
+  console.log(productData);
+
   const result = await ProductService.createProduct(productData);
 
   sendResponse<IProduct>(res, {

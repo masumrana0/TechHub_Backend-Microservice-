@@ -22,12 +22,12 @@ process.on('uncaughtException', () => {
 let server: Server;
 
 const Run = async () => {
+  await RedisClient.connect();
   try {
-    await RedisClient.connect();
     await mongoose.connect(config.database_url as string);
     console.log('Database is connected');
     server = app.listen(config.port, () => {
-      console.log(`Example app listening on port ${config.port}`);
+      console.log(`ApiGateway server is running on port ${config.port}`);
     });
   } catch (error) {
     console.log('something is wrong', error);
