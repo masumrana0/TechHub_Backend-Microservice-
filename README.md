@@ -38,11 +38,7 @@ The architecture follows a microservices design pattern with Redis as a central 
 
 Please ensure that every request includes the `accessToken` in the headers.Authorization.
 
-### Super Admin Login & accessToken
-
-- **LoginData:** masum.rana6267@gmail.com
-- **Password:** 123456
-
+### Super_admin password, email  and accessToken
 ```json
 "email":"masum.rana6267@gmail.com",
 "password":"123456"
@@ -52,11 +48,7 @@ Please ensure that every request includes the `accessToken` in the headers.Autho
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjEzZjBkOTg0OTFkMjBmYjgyMGRiNTQiLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJlbWFpbCI6Im1hc3VtLnJhbmE2MjY3QGdtYWlsLmNvbSIsImlhdCI6MTcxMjY4ODgwOCwiZXhwIjoxNzE0MDAyODA4fQ.h27FNGeRxX3l1_n25HpjrX8ZtkSDgo9pQmNbHA_hicg
 ```
 
-### Customer Login
-
-- **Email:** Hossain123@gmail.com
-- **Password:** 123456
-
+### Customer password , email and accessToken
 ```json
 "email":"Hossain123@gmail.com",
 "password":"123456"
