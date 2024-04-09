@@ -79,8 +79,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjE1OGU2MTZkMTVkYWE0MDVhMGI
 - **Admin Registration:** POST https://api-gate-way-tech-hub.vercel.app/Api/v1/auth/admin/registration
   (only Super admin can create admin.)
   (make sure super_admin accessToken put Headers Authorization)
-- **Super_Admin AccessToken:**
-``` eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjEzZjBkOTg0OTFkMjBmYjgyMGRiNTQiLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJlbWFpbCI6Im1hc3VtLnJhbmE2MjY3QGdtYWlsLmNvbSIsImlhdCI6MTcxMjY4NTM5NiwiZXhwIjoxNzEzOTk5Mzk2fQ.m_ATVkWKe3GwUFJiy7_z8oFvKEa8ElZs-S1p3QHLST4 ```
+
+ 
 
 ```json
 {
