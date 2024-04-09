@@ -48,8 +48,7 @@ Please ensure that every request includes the `accessToken` in the headers.Autho
 "password":"123456"
 ```
 - **Access Token:** ```text 
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjEzZjBkOTg0OTFkMjBmYjgyMGRiNTQiLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJlbWFpbCI6Im1hc3VtLnJhbmE2MjY3QGdtYWlsLmNvbSIsImlhdCI6MTcxMjY4ODgwOCwiZXhwIjoxNzE0MDAyODA4fQ.h27FNGeRxX3l1_n25HpjrX8ZtkSDgo9pQmNbHA_hicg
-```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjEzZjBkOTg0OTFkMjBmYjgyMGRiNTQiLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJlbWFpbCI6Im1hc3VtLnJhbmE2MjY3QGdtYWlsLmNvbSIsImlhdCI6MTcxMjY4ODgwOCwiZXhwIjoxNzE0MDAyODA4fQ.h27FNGeRxX3l1_n25HpjrX8ZtkSDgo9pQmNbHA_hicg```
 
 ### Customer Login
 
@@ -78,9 +77,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjE1OGU2MTZkMTVkYWE0MDVhMGI
   (make sure super_admin accessToken put Headers Authorization)
 - **Super_Admin AccessToken:**
 
-```text
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjEzZjBkOTg0OTFkMjBmYjgyMGRiNTQiLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJlbWFpbCI6Im1hc3VtLnJhbmE2MjY3QGdtYWlsLmNvbSIsImlhdCI6MTcxMjY4NTM5NiwiZXhwIjoxNzEzOTk5Mzk2fQ.m_ATVkWKe3GwUFJiy7_z8oFvKEa8ElZs-S1p3QHLST4
-```
+```text eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjEzZjBkOTg0OTFkMjBmYjgyMGRiNTQiLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJlbWFpbCI6Im1hc3VtLnJhbmE2MjY3QGdtYWlsLmNvbSIsImlhdCI6MTcxMjY4NTM5NiwiZXhwIjoxNzEzOTk5Mzk2fQ.m_ATVkWKe3GwUFJiy7_z8oFvKEa8ElZs-S1p3QHLST4 ```
 
 ```json
 {
