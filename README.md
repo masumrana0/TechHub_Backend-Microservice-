@@ -191,7 +191,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjE1OGU2MTZkMTVkYWE0MDVhMGI
 - **Get Specific User Orders:** GET https://api-gate-way-tech-hub.vercel.app/api/v1/order
   (only Customer can get order and make sure must have accessToken in headers Authorization)
 
-- Masum Rana (@masum-rana)
+- Masum Rana   
 
 
 
